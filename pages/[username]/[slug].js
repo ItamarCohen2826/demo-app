@@ -8,6 +8,7 @@ import Heart from '../../components/HeartButton';
 import { useContext } from 'react';
 import { UserContext } from '../../lib/context';
 
+
 export async function getStaticProps({ params }) {
     const { username, slug } = params;
     const userDoc = await getUserWithUsername(username);
