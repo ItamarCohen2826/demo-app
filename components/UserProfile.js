@@ -49,7 +49,7 @@ export default function UserProfile({ user }) {
           .then((url) => {
             setDownloadURL(url);
             setUploading(false);
-            auth.currentUser.updateProfile({ photoURL: url, displayName: auth.currentUser.displayName })
+            auth.currentUser.updateProfile({ photoURL: url })
                 .then(() => {
                     router.reload(window.location.pathname)
                 })
