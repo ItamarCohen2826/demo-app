@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { auth, storage, STATE_CHANGED } from '../lib/firebase';
 import Loader from './Loader';
 
@@ -50,7 +51,10 @@ export default function ImageUploader() {
         </>
       )}
 
-      {downloadURL && <code className="upload-snippet">{`![alt](${downloadURL})`}</code>}
+      {downloadURL && <button type='button' onClick={() => {
+        navigator.clipboard.writeText(`![alt](${downloadURL})`);
+        toast.success('Copied! ');
+      }} className="upload-snippet">Copy</button>}
     </div>
   );
 }

@@ -69,7 +69,7 @@ function PostForm({ postRef, defaultValues, preview }) {
             updatedAt: serverTimestamp(),
         });
         reset({ content, published });
-
+        
         toast.success('Post updated successfully!')
     }
 

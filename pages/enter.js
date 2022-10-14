@@ -5,6 +5,9 @@ import debounce from 'lodash.debounce';
 import Router, { useRouter } from "next/router";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-hot-toast";
+import SignInEmailPassword from '../components/Login';
+import SignUpButton from "../components/Signup";
+import ForgotPassword from '../components/ForgotPassword';
 
 //Log in page
 export default function EnterPage({ }) {
@@ -43,121 +46,6 @@ function SignInButton() {
     );
 }
       
-function SignUpButton() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onEmailChange = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value.toLowerCase());
-  }
-
-  const onPasswordChange = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        toast.success("Registered!");
-      })
-      .catch (error => {
-        const errorMessage = error.message;
-        toast.error("Email already taken! ")
-      });
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1>Sign up</h1>
-      <div>
-        <label>Email</label>
-        <input type="email" placeholder="email" onChange={(e) => {onEmailChange(e)}} />
-        <label>Password</label>
-        <input type="password" placeholder="password" onChange={(e) => {onPasswordChange(e)}} min={6} />
-        <button type="submit" className="btn-green">Register</button>
-      </div>
-    </form>
-  )
-}
-
-function ForgotPassword() {
-
-  const [email, setEmail] = useState('');
-
-  const onEmailChange = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value.toLowerCase());
-  }
-
-  const handleSubmit = (e) => {
-    sendPasswordResetEmail(auth, email)
-    .then(() => {
-      toast.success("Sent password reset email!");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      toast.error("Email doesn't exist!");
-    });
-  }
-
-  return (
-    <div>
-      <h1>Forgot my password</h1>
-      <div>
-        <label>Email</label>
-        <input type="email" placeholder="email" onChange={(e) => {onEmailChange(e)}} />
-        <button type="submit" onClick={handleSubmit} className="btn-green">Reset password</button>
-      </div>
-    </div>
-  )
-}
-
-function SignInEmailPassword() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onEmailChange = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value.toLowerCase());
-  }
-
-  const onPasswordChange = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          toast.success(`Welcome back!`);
-        })
-        .catch((error) => {
-          toast.error("Incorrect email or password! ")
-          const errorMessage = error.message;
-        })
-        // .then(toast.success("Logged In!"))
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1>Sign in</h1>
-      <div>
-        <label>Email</label>
-        <input type="email" placeholder="email" onChange={(e) => {onEmailChange(e)}} />
-        <label>Password</label>
-        <input type="password" placeholder="password" onChange={(e) => {onPasswordChange(e)}} min={6} />
-        <button type="submit" className="btn-green">Sign in</button>
-      </div>
-    </form>
-  )
-}
 
 // Sign out button
 function SignOutButton() {

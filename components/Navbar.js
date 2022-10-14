@@ -4,6 +4,7 @@ import { UserContext } from '../lib/context';
 import { useContext } from 'react';
 import { auth } from '../lib/firebase';
 import Image from 'next/image';
+import HackerImage from '../public/hacker.png';
 
 // Navbar Component
 export default function Navbar() {
@@ -26,7 +27,7 @@ export default function Navbar() {
                         </li>
                         <li>
                             <Link href={`/${username}`}>
-                                <Image src={user?.photoURL ? user.photoURL : '/favicon.ico'} height={50} width={50} alt='' />
+                                <Image src={user?.photoURL ? user.photoURL : HackerImage} height={50} width={50} alt='' />
                             </Link>
                         </li>
                     </>
