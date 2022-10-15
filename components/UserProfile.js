@@ -49,12 +49,7 @@ export default function UserProfile({ user }) {
           .then((url) => {
             setDownloadURL(url);
             setUploading(false);
-            auth.currentUser.updateProfile({ photoURL: url })
-                .then(() => {
-                    router.reload(window.location.pathname)
-                })
-
-          });
+            auth.currentUser.updateProfile({ photoURL: url })});
           const userDoc = firestore.doc(`users/${user.uid}`);
           userDoc.update({ photoURL: downloadURL })
           console.log('%c Well:', user.photoURL, 'color: red; font-weight: bold;')
@@ -67,7 +62,15 @@ export default function UserProfile({ user }) {
     // TODO add image when not using gmail, ternary operator, server responding with error code 500
     return (
         <div className='box-center'>
-            <Image src={ user.photoURL ? user.photoURL : HackerImage } height={150} width={150} alt='' className='card-img-center' /> 
+            {!user.photoURL && !auth.currentUser === user &&
+                <Image src={ HackerImage } height={150} width={150} alt='' className='card-img-center' /> 
+            }
+            {username === user.username ? 
+                <Image src={ auth.currentUser.photoURL } height={150} width={150} alt='' className='card-img-center' /> 
+                :
+                <></>
+            }
+
             <p>
                 <i>@{user.username}</i>
             </p>
