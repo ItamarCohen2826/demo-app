@@ -19,15 +19,22 @@ export default function EnterPage({ }) {
     */
 
     return (
-        <main>
+        <main style={{
+          "display": "block",
+        }}>
       {user ? 
         !username ? <UsernameForm /> : <SignOutButton /> 
         : 
         <>
-          <SignInButton />
-          <SignUpButton />
-          <SignInEmailPassword />
-          <ForgotPassword />
+          <ul style={{
+          "display": "block",
+          "listStyleType": "none",
+          }}>
+            <li><SignInButton /></li>
+            <li><SignUpButton /></li>
+            <li><SignInEmailPassword /></li>
+            <li><ForgotPassword /></li>
+          </ul>
         </>
       }
         </main>

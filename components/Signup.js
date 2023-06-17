@@ -36,7 +36,7 @@ export default function SignUpButton() {
         <label>Email</label>
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           onChange={(e) => {
             onEmailChange(e);
           }}
@@ -44,7 +44,7 @@ export default function SignUpButton() {
         <label>Password</label>
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           onChange={(e) => {
             onPasswordChange(e);
           }}

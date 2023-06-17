@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { sendEmailVerification } from "firebase/auth";
 
+import styles from '../styles/Home.module.css';
+
 export default function ForgotPassword() {
 
     const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ export default function ForgotPassword() {
         <h1>Forgot my password</h1>
         <div>
           <label>Email</label>
-          <input type="email" placeholder="email" onChange={(e) => {onEmailChange(e)}} />
+          <input type="email" placeholder="Email" onChange={(e) => {onEmailChange(e)}} />
           <button type="submit" onClick={handleSubmit} className="btn-green">Reset password</button>
         </div>
       </div>

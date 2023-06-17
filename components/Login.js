@@ -35,9 +35,9 @@ export default function SignInEmailPassword() {
         <h1>Sign in</h1>
         <div>
           <label>Email</label>
-          <input type="email" placeholder="email" onChange={(e) => {onEmailChange(e)}} />
+          <input type="email" placeholder="Email" onChange={(e) => {onEmailChange(e)}} />
           <label>Password</label>
-          <input type="password" placeholder="password" onChange={(e) => {onPasswordChange(e)}} min={6} />
+          <input type="password" placeholder="Password" onChange={(e) => {onPasswordChange(e)}} min={6} />
           <button type="submit" className="btn-green">Sign in</button>
         </div>
       </form>

@@ -47,12 +47,14 @@ input {
   font-size: 1.5rem;
   width: 100%;
   padding: 5px 10px;
+  border-radius: 10px;
+  font-family: 'Noto Sans', sans-serif;
 }
-
 fieldset {
   border: none;
   padding: 1rem 0;
   font-size: 1.25rem;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 code {
